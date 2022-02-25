@@ -1,8 +1,9 @@
 #include<iostream>
 #include<string>
+#include "decisions.h"
 using std::cout; using std::cin; using std::string;
 //write include statements
-#include "decisions.h"
+
 
 /*
 In main write code to capture a letter_grade and credit_hours from the keyboard:
@@ -24,35 +25,38 @@ Display:
 GPA 3.0
 
 */
-int main() 
+
+
+int main()
 {
-	string letter_grade;
-	int credit_hours, sum_credit_hours = 0, sum_credit_points = 0;
+	int choice;
+	cout<<"MAIN MENU \n";
+	cout<<"1-Letter grade using if \n";
+	cout<<"2-Letter grade using switch \n";
+	cout<<"3-Exit \n";
 
-	cout << "Enter letter grade: ";
-	cin >> letter_grade;
-	cout << "Enter credit hours: ";
-	cin >> credit_hours;
-	sum_credit_points += get_grade_points(letter_grade) * credit_hours;
-	sum_credit_hours += credit_hours;
+	cin>>choice;
 
-	cout << "Enter letter grade: ";
-	cin >> letter_grade;
-	cout << "Enter credit hours: ";
-	cin >> credit_hours;
-	sum_credit_points += get_grade_points(letter_grade)  * credit_hours;
-	sum_credit_hours += credit_hours;
+	if (choice == 1)
+	{
+		int grade;
+		cout<<"Enter your grade: \n";
+		cin>>grade;
+		cout << "Your grade is: " << get_letter_grade_using_if(grade) << "\n"; 
+		
+	}
 
-	cout << "Enter letter grade: ";
-	cin >> letter_grade;
-	cout << "Enter credit hours: ";
-	cin >> credit_hours;
-	sum_credit_points += get_grade_points(letter_grade)  * credit_hours;
-	sum_credit_hours += credit_hours;
+	else if (choice == 2)
+	{
+		int grade;
+		cout<<"Enter your grade: \n";
+		cin>>grade;
+		cout << "Your grade is: " << get_letter_grade_using_switch(grade) << "\n";
+		
+	}
 
-
-	double gpa = calculate_gpa(sum_credit_hours, sum_credit_points);
-	cout << "GPA: " << gpa;
-
-	return 0;
+	else
+	{
+		cout << "Have a nice day! \n";
+	}
 }
