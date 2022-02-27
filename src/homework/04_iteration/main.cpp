@@ -1,16 +1,23 @@
 //write include statements
+#include "dna.h"
+#include<iostream>
+#include<string>
+using std::cout; using std::cin; using std::string;
 
-//write using statements
 
-
-/*
-Write code that prompts user to enter 1 for Get GC Content, 
-or 2 for Get DNA Complement.  The program will prompt user for a 
-DNA string and call either get gc content or get dna complement
-function and display the result. Program runs as long as 
-user enters a y or Y.
-*/
-int main() 
+int main()
 {
+	int choice;
+	app_run();
+	cout << "Press 1 to continue or 0 to end \n";
+	cin >> choice;
+	if (choice == 1)
+	{
+		app_run();
+	}
+	else;
+	
 	return 0;
+
+
 }
