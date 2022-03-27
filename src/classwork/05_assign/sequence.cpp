@@ -1,15 +1,91 @@
-//write include statements 
+#include<string>
+#include "sequence.h"
+#include<iostream>
+using std::cout; using std::cin; using std::string;
+
+double get_gc_content(const std::string& dna)
+{
+   double G_count = 0;
+   double C_count = 0;
+   for (int i = 0; i < dna.length(); i++)
+   {
+       if (dna[i] == 'G')
+           G_count++;
+       if (dna[i] == 'C')
+           C_count++;
+   }
+   return (G_count + C_count) / dna.length();
+}
 
 
-/*
-Write code for void function display_vector that accepts parameter const reference vector of strings.
-The function will iterate through the vector and display a string per line.
-*/
+std::string get_dna_complement(std::string dna)
+{
+   std::string rev_dna = reverse_string(dna);
+   for (int i = 0; i < rev_dna.length(); i++)
+   {
+       switch (rev_dna[i])
+       {
+           case 'A':
+               rev_dna[i] = 'T';
+               break;
+           case 'T':
+               rev_dna[i] = 'A';
+               break;
+           case 'C':
+               rev_dna[i] = 'G';
+               break;
+           case 'G':
+               rev_dna[i] = 'C';
+               break;
+       }
+   }
+   return rev_dna;
+}
 
 
-/*
-Write code for void function update_vector_element that accepts parameter reference vector of strings,
-a string vector search_value, and a string replace_value.
-The function will iterate through the vector and search for the search_value and if found will
-replace the vector element with the replace_value.
-*/
+std::string reverse_string(std::string dna)
+{
+   std::string revDNA = "";
+   for (int i = dna.length() - 1; i >= 0; i--)
+       revDNA += dna[i];
+   return revDNA;
+}
+
+void display_menu()
+{
+    cout << "1 - Get GC Content \n";
+    cout << "2 - Get DNA Complement \n";
+    cout << "3 - Exit \n";
+}
+
+void prompt_user()
+{
+    cout << "Enter DNA String";
+}
+
+void app_run()
+{
+	int choice;
+    string dna;
+	do
+	{
+		display_menu();
+		cin >> choice;
+        if (choice == 1)
+        {
+            prompt_user();
+            cin >> dna;
+            cout << get_gc_content(dna) << "\n";
+
+        }
+        else if (choice == 2)
+        {
+            prompt_user();
+            cin >> dna;
+            cout << get_dna_complement(dna) << "\n";
+        }
+
+
+	} while (!(choice == 3));
+
+}
