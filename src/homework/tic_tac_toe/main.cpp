@@ -1,15 +1,17 @@
 #include "tic_tac_toe.h"
-#include <limits>
-#include "tic_tac_toe_manager.h"
 #include "tic_tac_toe_3.h"
 #include "tic_tac_toe_4.h"
+#include "tic_tac_toe_data.h"
+#include "tic_tac_toe_manager.h"
+#include <limits>
 #include <memory>
 
 using std::cout; using std::cin; using std::string;
 
 int main() 
 {
-    TicTacToeManager manager;
+    TicTacToeData data;
+	TicTacToeManager manager(data);
     std::unique_ptr<TicTacToe> tic_tac_toe;
     std::string player;
     char choice;
@@ -48,22 +50,6 @@ int main()
 
         do
         {
-            /*int position;
-            cout<<"Enter position [1-9]: ";
-            cin>>position;
-
-            while(!cin.good() && (position < 1 || position > 9))
-            {
-                cin.clear();
-                cin.ignore(5, '\n');
-
-                cout<<"Enter position [1-9]: ";
-                cin>>position;
-            }
-
-            game.mark_board(position);
-            game.display_board();*/
-
             cin>>*tic_tac_toe;
             cout<<*tic_tac_toe;
 
